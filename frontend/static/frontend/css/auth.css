@@ -1,0 +1,57 @@
+body {
+    background: url('../auth_bg.jpeg');
+    display: flex; align-items: center; justify-content: center; margin: 0;
+}
+
+#form {
+    backdrop-filter: blur(20px) brightness(0.7);
+    border-radius: 15px;
+    width: 90vw;
+    min-height: 40vh;
+    padding: 1rem;
+
+    display: flex; justify-content: center; align-items: center; flex-direction: column;
+}
+
+#form > div:first-child {
+    display: flex; justify-content: space-between; flex-direction: row;
+    width: 100%;
+}
+
+#form > div:first-child div {
+    text-align: center; padding: 0.5rem 0;
+    font-size: 18px; text-align: center; width: 50%;
+    cursor: pointer;
+    color: #dcdcdc;
+}
+
+#form > div:first-child div.active {
+    color: #fff;
+    border-bottom: 1px solid white;
+}
+
+#form > form {
+    justify-content: center; align-items: center; flex-direction: column;
+    display: none;
+}
+
+#form > form.active {
+    display: flex;
+}
+
+@media screen and (min-width: 576px) {
+    #form > div {
+        width: 85%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    #form {
+        width: 30vw; padding: 3rem;
+    }
+
+    #form > form {
+        width: 90%;
+    }
+}

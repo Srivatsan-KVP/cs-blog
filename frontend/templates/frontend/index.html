@@ -1,0 +1,17 @@
+{% extends './base.html' %} {% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block includes %}
+    <link rel="stylesheet" href={% static 'frontend/css/index.css' %}>
+{% endblock includes %}
+
+{% block content %}
+
+<div id="container">
+    <h1>Welcome to our CS Blog!</h1>
+    <h3>An open community developed by the students of KV Picket to help anyone pursuing Computer Science</h3>
+    <a class="submit" href="/blog/" id="action">Let's go!</a>
+</div>
+
+{% endblock content %}

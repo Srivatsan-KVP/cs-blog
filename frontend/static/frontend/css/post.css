@@ -1,0 +1,28 @@
+body {
+    background: url('../blog_bg.jpeg');
+}
+
+#container {
+    margin: 1rem;
+}
+
+#post, .reply {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(20px);
+    border-radius: 20px;
+}
+
+.author { display: flex; align-items: center; padding: 1rem 0; }
+#post_title { font-size: 22px; font-weight: bold; }
+#post textarea { max-height: 40vh; }
+
+@media screen and (min-width: 768px) {
+    #container {
+        margin: 1rem 17.5vw;
+    }
+    
+    #post { padding: 2rem 5rem; }
+
+    .reply { margin: 0 10vw; padding: 1.5rem 2.5rem }
+    .reply .content { font-size: 20px; }
+}

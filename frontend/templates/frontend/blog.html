@@ -1,0 +1,78 @@
+{% extends './base.html' %} {% load static %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block includes %}
+    <link rel="stylesheet" href={% static 'frontend/css/blog.css' %}>
+{% endblock includes %}
+
+{% block content %}
+
+    <div id="container">
+
+        {% if logged_in %}
+            <div style='text-align: center'>
+                <div class="submit" onClick="showModal('blog_modal')">New Post</div>
+            </div>
+        {% endif %}
+
+        {% for blog in blogs %}
+            <div class="post" data-id={{ blog.uid }} onClick='location.pathname = `${location.pathname}${this.dataset.id}/`'>
+                <div class="author">
+                    <span class="icon">account_circle</span> 
+                    {{ blog.author }} {% if blog.nickname %} &nbsp; ({{ blog.nickname }}) {% endif %}
+                </div>
+                <div class="title">{{ blog.title }}</div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="modal" id="blog_modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center">
+                <h1>New Blog</h1>
+                <div class="icon" onClick="hideModal('blog_modal')">close</div>
+            </div>
+
+            <div id="blog_form">
+                {% csrf_token %}
+                <div class="error"></div>
+                <div class="inp">
+                    <span>Title*</span>
+                    <input type="text" id="blog_title" required>
+                </div>
+                <div class="inp">
+                    <textarea placeholder='Your content here...' 
+                        id="blog_content" cols="30" rows="10" required></textarea>
+                </div>
+
+                <span style='float: right' class="submit" onClick='createBlog(this)'>Post!</span>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        const createBlog = btn => {
+
+            if (validateForm('blog_form')) {
+                error = document.querySelector('.error')
+                error.innerText = ''
+    
+                submitForm({
+                    'title': document.getElementById('blog_title').value,
+                    'content': document.getElementById('blog_content').value,
+                }, btn, (res) => { 
+                    if (res.valid)
+                        location.reload()
+                    else
+                        error.innerText = res.message
+                }, () => { error.innerText = 'Something went wrong! Please try again!!' })
+            }
+        }
+
+    </script>
+
+{% endblock content %}

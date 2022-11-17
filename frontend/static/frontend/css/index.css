@@ -1,0 +1,34 @@
+body {
+    background: url('../home_bg.jpeg');
+    backdrop-filter: brightness(0.8);
+    display: flex; align-items: center; justify-content: center; margin: 0;
+}
+
+#container {
+    width: 100vw;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+h1, h3 { font-family: 'Lemonada', cursive }
+
+h1 { color: #fff }
+h3 { color: #ddffff; margin-bottom: 3rem; }
+
+#action {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 1.5rem; margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        justify-content: start;
+    }
+
+    #container {
+        text-align: start;
+        padding: 5rem;
+        max-width: 35vw;
+    }
+}

@@ -1,0 +1,100 @@
+{% extends './base.html' %} {% load static %}
+
+{% block title %}Login | Signup{% endblock title %}
+
+{% block includes %}
+    <link rel="stylesheet" href={% static 'frontend/css/auth.css' %}>
+{% endblock includes %}
+
+{% block content %}
+    {% csrf_token %}
+
+    <div id="form">
+
+        <div>
+            <div onClick="
+            this.parentElement.querySelector('.active').classList.remove('active')
+            this.classList.add('active')
+            changeForm(0)
+            " class="active"><span class="icon">login</span> Login</div>
+            <div onClick="
+            this.parentElement.querySelector('.active').classList.remove('active')
+            this.classList.add('active')
+            changeForm(1)
+            "><span class="icon">account_box</span> Signup</div>
+        </div>
+
+        <div class="success"></div>
+
+        <form id="login_form" class="active">
+            <div class="inp">
+                <span>Email*</span>
+                <input autocomplete="off" type="email" id="login_email" required>
+            </div>
+            <div class="inp">
+                <span>Password*</span>
+                <input autocomplete="off" type="password" id="login_pass" required>
+            </div>
+
+            <div class="submit" onClick="login(this)">Login</div>
+        </form>
+
+        <form id="signup_form1">
+            <div class="inp">
+                <span>Name*</span>
+                <input autocomplete="off" type="text" id="signup_name" required>
+            </div>
+            <div class="inp">
+                <span>Nickname (if any)</span>
+                <input autocomplete="off" type="text" id="signup_nickname">
+            </div>
+            <div class="inp">
+                <span>Email*</span>
+                <input autocomplete="off" type="email" id="signup_email" required>
+            </div>
+            <div class="submit" onClick="if (validateForm('signup_form1')) changeForm(2)">Next &raquo;</div>
+        </form>
+
+        <form id="signup_form2">
+            <div class="inp">
+                <span>Password*</span>
+                <input autocomplete="off" type="password" id="signup_pass" required>
+            </div>
+            <div class="inp">
+                <span>Confirm Password*</span>
+                <input autocomplete="off" type="password" id="signup_cpass" required>
+            </div>
+            <div style="display: flex; justify-content: space-around; width: 100%">
+                <div class="sec" onClick="changeForm(1)">&laquo; Back</div>
+                <div class="submit" onClick="signup(this)">Signup</div>
+            </div>
+        </form>
+
+        <div class="error"></div>
+
+    </div>
+
+    <script>
+
+        forms = [
+            document.getElementById('login_form'),
+            document.getElementById('signup_form1'),
+            document.getElementById('signup_form2')
+        ]
+        curr = 0
+
+        const changeForm = form => {
+            if ((curr == 0 && form > 0) || (curr > 0 && form == 0)) {
+                document.querySelector('.error').innerText = ''
+                document.querySelector('.success').innerText = ''
+            }
+
+            forms.forEach(form => form.classList.remove('active'))
+            forms[form].classList.add('active')
+            curr = form
+        }
+
+    </script>
+    <script src={% static 'frontend/js/auth.js' %}></script>
+
+{% endblock content %}
