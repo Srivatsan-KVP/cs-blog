@@ -10,6 +10,7 @@ body {
     padding: 1rem;
     background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(20px);
     border-radius: 20px;
+    margin: 1vh 0;
 }
 
 .author { display: flex; align-items: center; padding: 1rem 0; }
@@ -23,6 +24,6 @@ body {
     
     #post { padding: 2rem 5rem; }
 
-    .reply { margin: 0 10vw; padding: 1.5rem 2.5rem }
+    .reply { margin: 1vh 10vw; padding: 1.5rem 2.5rem }
     .reply .content { font-size: 20px; }
 }
