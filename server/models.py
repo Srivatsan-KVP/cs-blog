@@ -13,7 +13,7 @@ class User(models.Model):
         return self.name + ' (' + self.nickname + ')'
 
 class Post(models.Model):
-    uid = models.UUIDField(default=uuid.uuid4())
+    uid = models.UUIDField(default=uuid.uuid4)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     content = models.TextField()
