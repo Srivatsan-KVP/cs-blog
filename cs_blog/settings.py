@@ -84,11 +84,14 @@ DATABASES = {
     # }
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "OPTIONS": {
-            "user": 'root',
-            'password': '1521kvp',
-            'database': 'blog'
-        }
+        "USER": 'root',
+        "PASSWORD": '1521kvp',
+        "NAME": "blog"
+        #"OPTIONS": {
+        #    "user": 'root',
+        #    'password': '1521kvp',
+        #    'database': 'blog'
+        #}
     }
 }
 
